@@ -1,4 +1,4 @@
-# jSCargo Monorepo
+# jsCargo Monorepo
 
 Modular, self-hosted media tooling—schema, transcoding, storage adapters, API helpers, React hooks, and a CLI—for video, audio, images, and more. Designed from the ground up to support all media types, bundled under one workspace and maintained with Bun.
 

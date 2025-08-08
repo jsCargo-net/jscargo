@@ -1,6 +1,6 @@
 # @jscargo/schema
 
-Canonical JSON Schema (plus generated `.d.ts` typings) for jSCargo-formatted video metadata.
+Canonical JSON Schema (plus generated `.d.ts` typings) for jsCargo-formatted video metadata.
 
 ---
 
@@ -17,7 +17,7 @@ bun add github:jscargo-net/jscargo#path=packages/schema
 ## Contents
 
 * `jscargo-core.schema.json` – authoritative source of truth for core video metadata.
-* `jscargo-extensions.schema.json` – schema for jSCargo extensions.
+* `jscargo-extensions.schema.json` – schema for jsCargo extensions.
 * `index.d.ts` – auto-generated TypeScript declarations (committed to the repo so consumers don’t need a build step).
 
 ---
@@ -64,7 +64,7 @@ Runs `json-schema-to-typescript` and overwrites `index.d.ts`.
 
 ## Versioning
 
-Semantic versioning independent of other jSCargo packages.
+Semantic versioning independent of other jsCargo packages.
 Breaking schema changes → **major** bump.
 
 ---

@@ -62,7 +62,9 @@ const valid = validate({
 if (!valid) console.error(validate.errors);
 ```
 
-`index.d.ts` ships with the package, so editors get full IntelliSense for all supported media types without TypeScript sources.
+> **TypeScript users:**  
+> This package provides two `.d.ts` files—one for each JSON schema (`jscargo-core.schema.d.ts` and `jscargo-extensions.schema.d.ts`).  
+> There is no single `index.d.ts`. Import types from the relevant file for type-safe metadata in editors.
 
 ---
 

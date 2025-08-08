@@ -1,4 +1,4 @@
-# JSCargo Monorepo
+# jSCargo Monorepo
 
 Modular, self-hosted video tooling—schema, transcoding, storage adapters, API helpers, React hooks, and a CLI—bundled under one workspace and maintained with Bun.
 

@@ -24,6 +24,7 @@ bun add github:jscargo-net/jscargo#path=packages/schema
 
 ## Usage
 
+```ts
 import schema from '@jscargo/schema/jscargo-core.schema.json' assert { type: 'json' };
 import schema from '@jscargo/schema/video-core.schema.json' assert { type: 'json' };
 

@@ -1,0 +1,41 @@
+# ─────────────────────────────────────────────
+# Core
+node_modules/
+
+# Bun
+.bun/
+
+# Build output (any package)
+dist/
+out/
+
+# Next.js or static-export examples
+.next/
+.vercel/
+build/
+
+# Archives
+*.tgz
+
+# Logs & reports
+logs/
+*.log
+report.*.json
+
+# Coverage
+coverage/
+*.lcov
+
+# Tool caches
+.cache/
+.eslintcache
+*.tsbuildinfo
+
+# Environment variables
+.env*
+!.env.example
+
+# OS / editor cruft
+.DS_Store
+.idea/
+.vscode/

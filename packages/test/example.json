@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "AI Podcast Episode",
+    "contentId": "pod-123",
+    "accessibility": ["describedAudio"]
+  },
+  "sources": [
+    {
+      "url": "https://cdn.com/podcast/ep123.mp3",
+      "type": "mp3",
+      "mimeType": "audio/mpeg",
+      "streamType": "vod"
+    },
+    {
+      "url": "https://cdn.com/chat/log123.json",
+      "type": "chat",
+      "mimeType": "application/json",
+      "streamType": null
+    }
+  ],
+  "tracks": [
+    {
+      "url": "https://cdn.com/chat/message1.txt",
+      "srclang": "en",
+      "label": "User Prompt",
+      "kind": "message",
+      "role": "user",
+      "format": "txt"
+    }
+  ]
+}

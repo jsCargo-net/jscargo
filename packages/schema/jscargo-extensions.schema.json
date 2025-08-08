@@ -1,0 +1,172 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://jscargo.net/schemas/jscargo-extensions.schema.json",
+  "allOf": [
+    { "$ref": "./jscargo-core.schema.json" },
+    {
+      "type": "object",
+      "properties": {
+        "hls": {
+          "type": "object",
+          "properties": {
+            "segmentDuration": { "type": "number", "description": "HLS segment duration in seconds" },
+            "lowLatency": { "type": "boolean", "default": false, "description": "Low-latency HLS" },
+            "cmaf": {
+              "type": "object",
+              "properties": {
+                "segmentDuration": { "type": "number", "description": "CMAF segment duration in seconds" },
+                "chunkSize": { "type": "number", "description": "CMAF chunk size in bytes" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "dash": {
+          "type": "object",
+          "properties": {
+            "segmentDuration": { "type": "number", "description": "DASH segment duration in seconds" },
+            "profile": { "type": "string", "description": "DASH profile" },
+            "minBufferTime": { "type": "number", "description": "Minimum buffer time in seconds" },
+            "cmaf": {
+              "type": "object",
+              "properties": {
+                "segmentDuration": { "type": "number", "description": "CMAF segment duration in seconds" },
+                "chunkSize": { "type": "number", "description": "CMAF chunk size in bytes" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "tags": { "type": "array", "items": { "type": "string" }, "description": "Content tags" },
+            "audio": {
+              "type": "object",
+              "properties": {
+                "soundId": { "type": "string", "description": "Audio sound ID" },
+                "title": { "type": "string", "description": "Audio title" },
+                "artist": { "type": "string", "description": "Audio artist" }
+              },
+              "additionalProperties": true
+            },
+            "social": {
+              "type": "object",
+              "properties": {
+                "commentsEnabled": { "type": "boolean", "default": true, "description": "Enable comments" },
+                "cta": { "type": "string", "description": "Call to action" },
+                "streamType": { "type": "string", "enum": ["duet"], "description": "Social-specific stream type" }
+              },
+              "additionalProperties": true
+            },
+            "commerce": {
+              "type": "object",
+              "properties": {
+                "productUrl": { "type": "string", "format": "uri", "description": "Product URL" },
+                "productId": { "type": "string", "description": "Product ID" }
+              },
+              "additionalProperties": true
+            },
+            "category": { "type": "string", "description": "Content category" },
+            "drm": {
+              "type": "object",
+              "properties": {
+                "type": { "type": "string", "description": "DRM type (e.g., 'widevine')" },
+                "licenseUrl": { "type": "string", "format": "uri", "description": "DRM license URL" },
+                "keyId": { "type": "string", "description": "DRM key ID" },
+                "encryptionScheme": { "type": "string", "description": "Encryption scheme" }
+              },
+              "additionalProperties": true
+            },
+            "analytics": {
+              "type": "object",
+              "properties": {
+                "trackingId": { "type": "string", "description": "Analytics tracking ID" },
+                "events": { "type": "array", "items": { "type": "string" }, "description": "Tracked events" }
+              },
+              "additionalProperties": true
+            },
+            "chapters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": { "type": "string", "description": "Chapter title" },
+                  "startTime": { "type": "number", "description": "Chapter start time in seconds" }
+                },
+                "required": ["title", "startTime"],
+                "additionalProperties": false
+              },
+              "description": "Array of chapters"
+            },
+            "keywords": { "type": "array", "items": { "type": "string" }, "description": "Search keywords" },
+            "interactions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": { "type": "string", "enum": ["quiz", "overlay", "dialogue"], "description": "Interaction type" },
+                  "data": { "type": "object", "description": "Interaction data" },
+                  "time": { "type": "number", "description": "Interaction trigger time in seconds" }
+                },
+                "required": ["type", "time"],
+                "additionalProperties": false
+              },
+              "description": "Array of interactions"
+            },
+            "rating": { "type": "string", "description": "Content rating (e.g., 'PG-13')" },
+            "compliance": {
+              "type": "object",
+              "properties": {
+                "gdprConsent": { "type": "boolean", "description": "GDPR consent flag" },
+                "ccpaOptOut": { "type": "boolean", "description": "CCPA opt-out flag" }
+              },
+              "additionalProperties": true
+            },
+            "ads": {
+              "type": "object",
+              "properties": {
+                "vastUrl": { "type": "string", "format": "uri", "description": "VAST ad URL" },
+                "vpaidUrl": { "type": "string", "format": "uri", "description": "VPAID ad URL" }
+              },
+              "additionalProperties": true
+            },
+            "ai": {
+              "type": "object",
+              "properties": {
+                "prompt": { "type": "string", "description": "AI generation prompt" },
+                "model": { "type": "string", "description": "AI model used (e.g., 'Grok 3')" },
+                "parameters": { "type": "object", "description": "Generation parameters (e.g., resolution, fps)" },
+                "history": { "type": "array", "items": { "type": "string" }, "description": "Prompt history for dynamic changes" },
+                "sessionId": { "type": "string", "description": "Conversation session ID" },
+                "context": { "type": "string", "description": "Conversation context (e.g., 'customer support')" }
+              },
+              "additionalProperties": true,
+              "description": "AI-specific metadata"
+            }
+          },
+          "additionalProperties": true
+        },
+        "audioTracks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": { "type": "string", "format": "uri", "description": "Audio track URL" },
+              "srclang": { "type": "string", "description": "Language code (e.g., 'en')" },
+              "label": { "type": "string", "description": "Display label (e.g., 'English')" },
+              "default": { "type": "boolean", "default": false, "description": "Default audio track" },
+              "embedded": { "type": "boolean", "default": false, "description": "Embedded in container" }
+            },
+            "required": ["url", "srclang", "label"],
+            "additionalProperties": false
+          },
+          "description": "Array of audio tracks"
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

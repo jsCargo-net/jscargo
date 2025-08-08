@@ -1,0 +1,25 @@
+{
+  "name": "@jscargo/schema",
+  "version": "1.0.0",
+  "main": "index.js",
+  "module": "index.mjs",
+  "exports": {
+    "import": "./index.mjs",
+    "require": "./index.js"
+  },
+  "files": [
+    "jscargo-core.schema.json",
+    "jscargo-core.schema.d.ts",
+    "jscargo-extensions.schema.json",
+    "jscargo-extensions.schema.d.ts"
+  ],
+  "description": "Canonical JSON Schema for jsCargo metadata",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
